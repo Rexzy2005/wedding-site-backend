@@ -18,9 +18,15 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors( origin: [
-  '*'
-]));
+const allowedOrigins = [
+  "*",
+  "http://localhost:3000",
+  "https://yourfrontend.com",
+];
+
+app.use(cors({
+  origin: allowedOrigins
+}));
 app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
