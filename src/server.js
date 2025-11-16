@@ -19,12 +19,17 @@ const PORT = process.env.PORT || 5000;
 
 // CORS Configuration
 const corsOptions = {
-  origin: ['http://localhost:5173', 'http://127.0.0.1:5173', 'https://eldon-geraldine.netlify.app'],
+  origin: [
+    "http://localhost:5173",
+    "https://eldon-geraldine.netlify.app",
+    "http://localhost:8080",
+    'http://127.0.0.1:8080',
+  ],
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  exposedHeaders: ['Content-Disposition'],
-  optionsSuccessStatus: 200
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  exposedHeaders: ["Content-Disposition"],
+  optionsSuccessStatus: 200,
 };
 
 // Apply CORS before other middleware
@@ -49,8 +54,8 @@ app.get('/health', (req, res) => {
 });
 
 // Routes
-app.use('/admin', authRoutes);
 app.use('/media', mediaRoutes);
+app.use('/admin', authRoutes);
 
 // 404 handler (must be after all routes)
 app.use(notFound);
