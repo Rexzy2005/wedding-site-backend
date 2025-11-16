@@ -54,8 +54,8 @@ app.get('/health', (req, res) => {
 });
 
 // Routes
-app.use('/media', mediaRoutes);
-app.use('/admin', authRoutes);
+app.use('/api/media', mediaRoutes);
+app.use('/api/admin', authRoutes);
 
 // 404 handler (must be after all routes)
 app.use(notFound);
